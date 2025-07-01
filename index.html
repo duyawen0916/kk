@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>同声传译练习</title>
+<style type="text/css">
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+#playButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#nextButton {
+    display: none;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#hiddenText {
+    display: none;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-width: 80%;
+}
+</style>
+</head>
+
+<body>
+ <h1>同声传译练习</h1>
+
+<button id="playButton">播放原文</button>
+
+<audio id="myAudio" controls style="display:none;">
+    <source src="原文3音频.mp3" type="audio/mpeg" />
+    <!-- 备用内容，当浏览器不支持audio元素时显示 -->
+    您的浏览器不支持音频播放功能。
+</audio>
+
+<button id="nextButton">点击查看译文</button>
+
+<div id="hiddenText">
+    <h3>译文：</h3>
+    <p>
+これは総書記の確固とした文化的自信から、時代の精神を受け継いで、湖北文化観光にハイレベルの位置づけを与えた。今回の大会は「発展の革新と融合、世界に名だかい文化観光地を創造する」をテーマとし、総書記の指示を真摯に実行し、国内外の友人とともに、山水を筆に、文化をインクに、新たな章の世界に名だたる文化観光地を創造するために筆を執る！この機会に、皆さんといくつかの経験を分かち合いたいと思います。</p>
+</div>
+
+<script type="text/javascript">
+// 获取DOM元素
+var playBtn = document.getElementById('playButton');
+var nextBtn = document.getElementById('nextButton');
+var hiddenText = document.getElementById('hiddenText');
+var audio = document.getElementById('myAudio');
+
+// 播放按钮点击事件
+playBtn.onclick = function() {
+    audio.play();
+    playBtn.style.display = 'none';
+    audio.style.display = 'block';
+};
+
+// 音频结束事件
+audio.addEventListener('ended', function() {
+    nextBtn.style.display = 'block';
+}, false);
+
+// 下一步按钮点击事件
+nextBtn.onclick = function() {
+    hiddenText.style.display = 'block';
+    nextBtn.style.display = 'none';
+    audio.style.display = 'none';
+};
+</script>
+</body>
+</html>
